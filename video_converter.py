@@ -13,7 +13,11 @@ CONVERTED_FOLDER = os.path.join(os.environ.get('HOME'), 'Movies/Converted')
 WATCH_FOLDER = os.path.join(os.environ.get('HOME'), 'PVR/Completed')
 REJECT_FOLDER = os.path.join(os.environ.get('HOME'), 'Movies/Rejected')
 
+# for mkv
 # ffmpeg -i "input.mkv" -y -f mp4 -vcodec copy -ac 2 -c:a libfaac "output.m4v"
+
+# for avi
+#ffmpeg -i /Users/jzucker/PVR/Completed/the.simpsons.s07e07.king-size.homer.real.dvdrip.xvid-medieval\ 11.44.53\ PM.avi -vcodec libx264 /Users/jzucker/Desktop/simpsons.m4v
 
 # number_of_args = 'Number of arguments: ' + str(len(sys.argv)) + ' arguments\n'
 # arg_list = 'Argument List: ' + str(sys.argv) + '\n'
@@ -28,7 +32,12 @@ def get_output_file_path(input_file_path, output_directory):
 	print movie_name
 	movie_directory = os.path.dirname(input_file_path)
 	print movie_directory
-	final_name = movie_name.replace('.mkv', '.m4v')
+	final_name = None
+	if movie_name.endswith('.mkv'):
+		final_name = movie_name.replace('.mkv', '.m4v')
+	elif movie_name.endswith('.avi'):
+		final_name = movie_name.replace('.avi', '.m4v')
+	#final_name = movie_name.replace('.mkv', '.m4v')
 	final_path = os.path.join(output_directory, final_name)
 	return final_path
 
