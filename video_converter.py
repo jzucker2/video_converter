@@ -72,7 +72,7 @@ class MovieListCollector():
 	def get_movie_from_folder(self, folder):
 		print 'get_movie_from_folder'
 		for item in os.listdir(folder):
-			if (item.endswith('.mkv')) and (item.find('sample') ==-1):
+			if ((item.endswith('.mkv')) or item.endswith('.avi')) and (item.find('sample') ==-1):
 				full_path = os.path.join(folder, item)
 				self.movies.append(full_path)
 		print self.movies
