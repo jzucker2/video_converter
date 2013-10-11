@@ -27,6 +27,8 @@ REJECT_FOLDER = os.path.join(os.environ.get('HOME'), 'Movies/Rejected')
 # test_file.write(arg_list)
 # test_file.close()
 
+
+
 def get_output_file_path(input_file_path, output_directory):
 	movie_name = os.path.basename(input_file_path)
 	print movie_name
@@ -40,6 +42,14 @@ def get_output_file_path(input_file_path, output_directory):
 	#final_name = movie_name.replace('.mkv', '.m4v')
 	final_path = os.path.join(output_directory, final_name)
 	return final_path
+
+class Movie():
+	def __init__(self, **kwargs):
+		self.source = None
+		self.destination = None
+		self.name = None
+	def get_format(self):
+		return '.mkv'
 
 def convert_video(input_file_path, output_directory):
 	print '*************'
